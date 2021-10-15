@@ -12,8 +12,8 @@ jobs:
     - run: make test
 
   vapor_xenial:
-    container: 
-      image: swift:5.2.3
+    container:
+      image: swift:5.5.0-xenial
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -21,10 +21,19 @@ jobs:
     - run: make test
 
   vapor_bionic:
-    container: 
-      image: swift:5.2.3
+    container:
+      image: swift:5.5.0-bionic
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - run: ./install-linux-dependencies.sh
     - run: make test
+
+  vapor_focal:
+    container:
+      image: swift:5.5.0-focal
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: ./install-linux-dependencies.sh
+      - run: make test

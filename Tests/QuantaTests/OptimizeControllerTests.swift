@@ -35,7 +35,7 @@ class OptimizeControllerTests: TestCase {
 
         XCTAssertEqual(response.http.status, .ok)
         XCTAssertEqual(88466, jsonResponse.originalSize)
-        XCTAssertEqual(73525, jsonResponse.optimizedSize) // failed
+        XCTAssertEqual(73525, jsonResponse.optimizedSize)
         XCTAssertNotNil(jsonResponse.encodedImageData)
     }
 
@@ -45,9 +45,9 @@ class OptimizeControllerTests: TestCase {
 
         XCTAssertEqual(response.http.status, .ok)
         XCTAssertEqual(response.http.headers.firstValue(name: HTTPHeaderName("Content-Type")), "image/jpeg")
-        XCTAssertEqual(response.http.headers.firstValue(name: HTTPHeaderName("X-Quanta-Ratio")), "16.8890") // failed
+        XCTAssertEqual(response.http.headers.firstValue(name: HTTPHeaderName("X-Quanta-Ratio")), "16.8890")
         let expectedFile = getFixture(fileNamePath: "typical_banner_1_opimized_90.jpg")
-        XCTAssertEqual(response.http.body.data!, expectedFile) // failed
+        XCTAssertEqual(response.http.body.data!, expectedFile)
     }
 
     func testRequestOptimizeWithQualityOutOfRangeShouldReturnBadRequest() throws {
@@ -100,7 +100,7 @@ class OptimizeControllerTests: TestCase {
         let response = try app.sendRequest(request: request)
 
         XCTAssertEqual(response.http.status, .ok)
-        XCTAssertEqual(response.http.headers.firstValue(name: HTTPHeaderName("X-Quanta-Ratio")), "70.0936") // failed
+        XCTAssertEqual(response.http.headers.firstValue(name: HTTPHeaderName("X-Quanta-Ratio")), "70.0936")
     }
 
 }
